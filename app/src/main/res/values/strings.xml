@@ -32,4 +32,6 @@
     <string name="shopping_cart_icon_alt">Shopping Cart ICON</string>
     <string name="profile_image_alt">Profile Image</string>
     <string name="settings_icon_alt">Settings Icon</string>
+    <string name="app_label">KlikSoftApp1</string>
+    <string name="search_hint">Wyszukaj produktu</string>
 </resources>
