@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GeneratorProduct extends AppCompatActivity {
+
     public void CreateProducts(View view){
+
         GridLayout gridLayoutContainer = findViewById(R.id.products);
         Product product1 = new Product("Komputer 4k rtx 4024", "Dobry komputer do gier uwu", 500, 0);
         Product product2 = new Product("laptop 2k rtx 404", "Dobry laptop uwu", 300, 1);
@@ -23,7 +25,7 @@ public class GeneratorProduct extends AppCompatActivity {
         Product product5 = new Product("telewizor 12k LG", "Tv 12k firmy lg", 5000, 4);
 
 
-        List<Product> products = new ArrayList<>();
+        ArrayList<Product> products = new ArrayList<>();
         products.add(product1);
         products.add(product2);
         products.add(product3);

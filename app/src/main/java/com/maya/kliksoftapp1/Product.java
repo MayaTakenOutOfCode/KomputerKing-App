@@ -9,7 +9,7 @@ public class Product {
     public String productPrice;
     public int id;
 
-    Product(String name, String desc, int price, int id){
+    public Product(String name, String desc, int price, int id){
         super();
         this.productName = name;
         this.productDesc = desc;
