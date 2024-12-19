@@ -15,7 +15,7 @@ import java.util.List;
 
 public class GeneratorProduct extends AppCompatActivity {
 
-    public static void CreateProducts(View view){
+    public void CreateProducts(View view){
 
         GridLayout gridLayoutContainer = findViewById(R.id.products);
         Product product1 = new Product("Komputer 4k rtx 4024", "Dobry komputer do gier uwu", 500, 0);
