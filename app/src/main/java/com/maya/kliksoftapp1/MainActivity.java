@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onBackClick(View view){
         setContentView(R.layout.content_main);
-        GeneratorProduct.CreateProducts();
+        GeneratorProduct.CreateProducts(view);
     }
 
 
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
 
             // Create products or other actions
-            CreateProducts();
+            GeneratorProduct.CreateProducts(view);
         } else {
             Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
         }
