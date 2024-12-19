@@ -19,9 +19,6 @@
         android:layout_marginBottom="8dp" />
 
     <!-- Grid Layout for Products -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <GridLayout
         android:id="@+id/shopping_cart_items_layout"
         android:layout_width="match_parent"
@@ -149,6 +146,5 @@
 <!--                android:textColor="@color/black"-->
 <!--                android:gravity="center" />-->
 <!--        </LinearLayout>-->
-        </GridLayout>
-    </ScrollView>
+    </GridLayout>
 </LinearLayout>
