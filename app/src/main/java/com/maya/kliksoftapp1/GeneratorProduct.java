@@ -13,16 +13,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeneratorProduct{
+public class GeneratorProduct {
     private Context context;
+    private MainActivity mainActivity;
 
-    public GeneratorProduct(Context context) {
-        this.context = context;
+    public GeneratorProduct(MainActivity mainActivity) {
+        this.context = mainActivity.getApplicationContext();
+        this.mainActivity = mainActivity;
     }
 
-    public void CreateProducts(View view){
+    public void CreateProducts(View view) {
+        GridLayout gridLayoutContainer = mainActivity.findViewById(R.id.products);
 
-        GridLayout gridLayoutContainer = ((AppCompatActivity) context).findViewById(R.id.products);
+        // Przykładowe produkty
         Product product1 = new Product("Komputer 4k rtx 4024", "Dobry komputer do gier uwu", 500, 0);
         Product product2 = new Product("laptop 2k rtx 404", "Dobry laptop uwu", 300, 1);
         Product product3 = new Product("telefon HD intelcore 2", "Dobry telefon", 300, 2);
@@ -37,13 +40,10 @@ public class GeneratorProduct{
         products.add(product4);
         products.add(product5);
 
-
-
         for (int i = 0; i < products.size(); i++) {
             Product product = getProductById(products, i);
-            int kalk = i*4;
-
-
+            int kalk = i * 4;
+            final int productId = i;
             // GENERATOR obrazu produktu
             String imageName = "zdjecie" + i;
             ImageView productImage = new ImageView(context);
@@ -97,28 +97,31 @@ public class GeneratorProduct{
             descriptionView.setLayoutParams(paramsText3);
             gridLayoutContainer.addView(descriptionView);
 
+
             // Generowanie przycisku dla produktu
             Button productButton = new Button(context);
             productButton.setText("Zamów teraz");
             productButton.setId(i);
-            // Parametry przycisku
+
+            // Ustawienie parametrów przycisku
             GridLayout.LayoutParams paramsButton = new GridLayout.LayoutParams();
-            paramsButton.rowSpec = GridLayout.spec(kalk+3); // Przycisk w nowym wierszu
+            paramsButton.rowSpec = GridLayout.spec(kalk + 3); // Przycisk w nowym wierszu
             paramsButton.columnSpec = GridLayout.spec(1); // Kolumna 1 (prawa strona)
             productButton.setLayoutParams(paramsButton);
             gridLayoutContainer.addView(productButton);
 
+
+            // Listener przycisku
             productButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-
                 public void onClick(View v) {
-
+                    // Wywołanie metody addToCard z MainActivity
+                    mainActivity.addToCard(view, productId);
                 }
             });
-
-
         }
     }
+
     public static Product getProductById(List<Product> products, int id) {
         for (Product product : products) {
             if (product.getId() == id) {

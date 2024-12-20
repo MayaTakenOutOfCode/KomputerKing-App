@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextLogin, editTextPassword;
     private Dialog settingsDialog;
     private Dialog shoppingCartDialog;
-    public GeneratorProduct productGen = new GeneratorProduct(this);
+    public GeneratorProduct productGen;
     private Context context;
 
 
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         databaseHelper = new DatabaseHelper(this);
+        productGen = new GeneratorProduct(this);
 
 
         // Initialize EditText fields
@@ -86,18 +87,30 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void addToCard(View view){
-        GridLayout gridLayoutContainer = findViewById(R.id.products);
+    public void addToCard(View view, int nrprod){
+        // Przykładowe produkty
         Product product1 = new Product("Komputer 4k rtx 4024", "Dobry komputer do gier uwu", 500, 0);
+        Product product2 = new Product("laptop 2k rtx 404", "Dobry laptop uwu", 300, 1);
+        Product product3 = new Product("telefon HD intelcore 2", "Dobry telefon", 300, 2);
+        Product product4 = new Product("tablet 3k gtx 1090px", "Dobry tablet", 500, 3);
+        Product product5 = new Product("telewizor 12k LG", "Tv 12k firmy lg", 5000, 4);
+
+
         ArrayList<Product> products = new ArrayList<>();
         products.add(product1);
-        Product product = GeneratorProduct.getProductById(products, 0);
+        products.add(product2);
+        products.add(product3);
+        products.add(product4);
+        products.add(product5);
+        Product product = GeneratorProduct.getProductById(products, nrprod);
 
         Window popupKoszyk = shoppingCartDialog.getWindow();
         GridLayout popupShoppingCartContainer = popupKoszyk.findViewById(R.id.shopping_cart_items_layout);
-        TextView shop = new TextView(this);
 
-        shop.setText((product.getProductName()));
+        
+
+        TextView shop = new TextView(this);
+        shop.setText(product.getProductName());
         shop.setTextColor(Color.BLACK);
         popupShoppingCartContainer.addView(shop);
     }
