@@ -15,6 +15,7 @@ import java.util.List;
 
 public class GeneratorProduct{
     private Context context;
+
     public GeneratorProduct(Context context) {
         this.context = context;
     }
@@ -99,13 +100,21 @@ public class GeneratorProduct{
             // Generowanie przycisku dla produktu
             Button productButton = new Button(context);
             productButton.setText("Zamów teraz");
-
+            productButton.setId(i);
             // Parametry przycisku
             GridLayout.LayoutParams paramsButton = new GridLayout.LayoutParams();
             paramsButton.rowSpec = GridLayout.spec(kalk+3); // Przycisk w nowym wierszu
             paramsButton.columnSpec = GridLayout.spec(1); // Kolumna 1 (prawa strona)
             productButton.setLayoutParams(paramsButton);
             gridLayoutContainer.addView(productButton);
+
+            productButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+
+                public void onClick(View v) {
+
+                }
+            });
 
 
         }
@@ -119,3 +128,5 @@ public class GeneratorProduct{
         return null;  // Jeśli nie znaleziono
     }
 }
+
+

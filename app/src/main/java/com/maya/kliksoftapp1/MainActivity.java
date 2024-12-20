@@ -1,5 +1,6 @@
 package com.maya.kliksoftapp1;
 
+import android.content.Context;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,9 +25,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextLogin, editTextPassword;
     private Dialog settingsDialog;
     private Dialog shoppingCartDialog;
+    public GeneratorProduct productGen = new GeneratorProduct(this);
+    private Context context;
+
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -75,17 +80,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+
+
+    public void addToCard(View view){
+        GridLayout gridLayoutContainer = findViewById(R.id.products);
+        Product product1 = new Product("Komputer 4k rtx 4024", "Dobry komputer do gier uwu", 500, 0);
+        ArrayList<Product> products = new ArrayList<>();
+        products.add(product1);
+        Product product = GeneratorProduct.getProductById(products, 0);
+
+        Window popupKoszyk = shoppingCartDialog.getWindow();
+        GridLayout popupShoppingCartContainer = popupKoszyk.findViewById(R.id.shopping_cart_items_layout);
+        TextView shop = new TextView(this);
+
+        shop.setText((product.getProductName()));
+        shop.setTextColor(Color.BLACK);
+        popupShoppingCartContainer.addView(shop);
+    }
+
+
+
+
+
+
+
+
+
+
     public void onShoppingCartClick(View view){
         shoppingCartDialog.show();
         Window popupKoszyk = shoppingCartDialog.getWindow();
-        GridLayout popupShoppingCartContainer = popupKoszyk.findViewById(R.id.shopping_cart_items_layout);
-
-        TextView shop = new TextView(this);
-        shop.setText("wow");
-        shop.setTextColor(Color.BLACK);
-
-        shop.setMaxWidth(550);
-        popupShoppingCartContainer.addView(shop);
     }
 
 
@@ -112,12 +140,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-//GridLayout popupshoppingcartContainer = findViewById(R.id.shopping_cart_items_layout);
-// GENERATOR product name w shopp
-
-
-    public GeneratorProduct productGen = new GeneratorProduct(this);
 
 
     public void onLoginClick(View view) {
