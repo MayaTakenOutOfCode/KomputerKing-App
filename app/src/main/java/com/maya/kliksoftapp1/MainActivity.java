@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 // GENERATOR product name w shopp
 
 
-    public GeneratorProduct productGen = new GeneratorProduct();
+    public GeneratorProduct productGen = new GeneratorProduct(this);
 
 
     public void onLoginClick(View view) {

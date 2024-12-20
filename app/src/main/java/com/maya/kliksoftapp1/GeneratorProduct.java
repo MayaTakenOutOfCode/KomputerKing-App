@@ -13,11 +13,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeneratorProduct extends AppCompatActivity {
+public class GeneratorProduct{
+    private Context context;
+    public GeneratorProduct(Context context) {
+        this.context = context;
+    }
 
     public void CreateProducts(View view){
 
-        GridLayout gridLayoutContainer = findViewById(R.id.products);
+        GridLayout gridLayoutContainer = ((AppCompatActivity) context).findViewById(R.id.products);
         Product product1 = new Product("Komputer 4k rtx 4024", "Dobry komputer do gier uwu", 500, 0);
         Product product2 = new Product("laptop 2k rtx 404", "Dobry laptop uwu", 300, 1);
         Product product3 = new Product("telefon HD intelcore 2", "Dobry telefon", 300, 2);
@@ -41,8 +45,9 @@ public class GeneratorProduct extends AppCompatActivity {
 
             // GENERATOR obrazu produktu
             String imageName = "zdjecie" + i;
-            ImageView productImage = new ImageView(this);
-            int imageResource = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            ImageView productImage = new ImageView(context);
+
+            int imageResource = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
             productImage.setImageResource(imageResource);
 
             // Parametry CSS dla ImageView
@@ -58,7 +63,7 @@ public class GeneratorProduct extends AppCompatActivity {
             gridLayoutContainer.addView(productImage);
 
             // GENERATOR nazwy produktu
-            TextView nameText = new TextView(this);
+            TextView nameText = new TextView(context);
             nameText.setText(product.getProductName());
             nameText.setMaxWidth(550);
             nameText.setTextAppearance(R.style.productListName);
@@ -70,7 +75,7 @@ public class GeneratorProduct extends AppCompatActivity {
             gridLayoutContainer.addView(nameText);
 
             // GENERATOR ceny produktu
-            TextView priceText = new TextView(this);
+            TextView priceText = new TextView(context);
             priceText.setText(product.getProductPrice() + " zł");
             priceText.setMaxWidth(550);
             priceText.setTextColor(Color.WHITE); // Kolor tekstu na biały
@@ -81,7 +86,7 @@ public class GeneratorProduct extends AppCompatActivity {
             gridLayoutContainer.addView(priceText);
 
             // GENERATOR opisu produktu
-            TextView descriptionView = new TextView(this);
+            TextView descriptionView = new TextView(context);
             descriptionView.setText(product.getProductDesc());
             descriptionView.setMaxWidth(500);
             descriptionView.setTextAppearance(R.style.productListDescription);
@@ -92,7 +97,7 @@ public class GeneratorProduct extends AppCompatActivity {
             gridLayoutContainer.addView(descriptionView);
 
             // Generowanie przycisku dla produktu
-            Button productButton = new Button(this);
+            Button productButton = new Button(context);
             productButton.setText("Zamów teraz");
 
             // Parametry przycisku
