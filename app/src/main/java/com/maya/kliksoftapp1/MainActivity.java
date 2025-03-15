@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         Window popupKoszyk = shoppingCartDialog.getWindow();
         GridLayout popupShoppingCartContainer = popupKoszyk.findViewById(R.id.shopping_cart_items_layout);
 
-        
+
 
         TextView shop = new TextView(this);
         shop.setText(product.getProductName());

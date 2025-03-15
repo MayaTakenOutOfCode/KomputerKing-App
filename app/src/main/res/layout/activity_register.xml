@@ -121,6 +121,7 @@
             android:textColorHighlight="@color/white"
             android:textSize="@dimen/loginTextSize"
             android:textStyle="bold"
+
             app:backgroundTint="@null" />
 
         <!-- Footer -->
